@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DefaultPage.Master.cs" Inherits="PracticeWebApplication.Site1" %>
+
+<%@ Register Src="~/UserControls/ucCategoryList.ascx" TagPrefix="uc1" TagName="ucCategoryList" %>
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="container">
+            <div id="menu">
+                <asp:Menu ID="navigation" runat="server" StaticDisplayLevels="2" DataSourceID="SiteMapDataSource" OnMenuItemClick="Menu1_MenuItemClick">
+                </asp:Menu>
+                <asp:SiteMapDataSource runat="server" ID="SiteMapDataSource"></asp:SiteMapDataSource>
+            </div>
+
+            <div id="banner">
+                <asp:Image ID="imgBanner" runat="server" Height="43px" Width="100%" ImageUrl="~/images/banner.jpg" SkinID="banner" />
+            </div>
+            <div id="breadcrumb">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+                <div id="search">
+                    <asp:TextBox ID="txtKeyword" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" />
+                </div>
+            </div>
+            <div id="sidebar">
+                <uc1:ucCategoryList runat="server" ID="ucCategoryList" />
+            </div>
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="clear"></div>
+            <div id="footer">footer</div>
+        </div>
+
+    </form>
+</body>
+</html>
